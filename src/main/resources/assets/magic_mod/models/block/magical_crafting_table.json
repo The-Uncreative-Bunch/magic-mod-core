@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "up": "minecraft:block/ancient_debris_top",
+    "down": "minecraft:block/bamboo_block",
+    "north": "minecraft:block/cobblestone",
+    "east": "minecraft:block/bedrock",
+    "south": "minecraft:block/birch_leaves",
+    "west": "minecraft:block/creaking_heart",
+    "particle": "minecraft:block/creaking_heart"
+  }
+}

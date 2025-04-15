@@ -1,6 +1,8 @@
 package com.uncreativebunch.magicmod;
 
+import com.uncreativebunch.magicmod.block.ModBlocks;
 import com.uncreativebunch.magicmod.item.ModItemGroups;
+import com.uncreativebunch.magicmod.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -24,6 +26,8 @@ public class MagicMod implements ModInitializer {
 
 		LOGGER.info("Hello Fabric world!");
 		LOGGER.info("Starting Magic Mod...");
+		ModBlocks.init();
+		ModItems.init();
 		ModItemGroups.init();
 		LOGGER.info("Finished Magic Mod initialization!");
 	}
