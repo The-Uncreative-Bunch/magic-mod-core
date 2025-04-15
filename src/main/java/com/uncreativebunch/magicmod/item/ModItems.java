@@ -22,6 +22,78 @@ public class ModItems {
             .food(ModFoodComponents.TESTING_POWDER_COMPONENT, ModConsumableComponents.TESTING_POWDER_NIGHTVIS)
     );
 
+    public static final Item ACACIA_STICK = register(
+        "acacia_stick",
+        Item::new,
+        new Item.Settings()
+    );
+
+    public static final Item BAMBOO_STICK = register(
+        "bamboo_stick",
+        Item::new,
+        new Item.Settings()
+    );
+
+    public static final Item BIRCH_STICK = register(
+        "birch_stick",
+        Item::new,
+        new Item.Settings()
+    );
+
+    public static final Item CHERRY_STICK = register(
+        "cherry_stick",
+        Item::new,
+        new Item.Settings()
+    );
+
+    public static final Item CRIMSON_STICK = register(
+        "crimson_stick",
+        Item::new,
+        new Item.Settings()
+    );
+
+    public static final Item DARK_OAK_STICK = register(
+        "dark_oak_stick",
+        Item::new,
+        new Item.Settings()
+    );
+
+    public static final Item JUNGLE_STICK = register(
+        "jungle_stick",
+        Item::new,
+        new Item.Settings()
+    );
+
+    public static final Item MANGROVE_STICK = register(
+        "mangrove_stick",
+        Item::new,
+        new Item.Settings()
+    );
+
+    public static final Item OAK_STICK = register(
+        "oak_stick",
+        Item::new,
+        new Item.Settings()
+    );
+
+    public static final Item PALE_OAK_STICK = register(
+        "pale_oak_stick",
+        Item::new,
+        new Item.Settings()
+    );
+
+    public static final Item SPRUCE_STICK = register(
+        "spruce_stick",
+        Item::new,
+        new Item.Settings()
+    );
+
+    public static final Item WARPED_STICK = register(
+        "warped_stick",
+        Item::new,
+        new Item.Settings()
+    );
+
 
     public static Item register(String name, @NotNull Function<Item.Settings, Item> factory, Item.Settings settings) {
         // Create the item's registry key (get it from the ITEM registry)
