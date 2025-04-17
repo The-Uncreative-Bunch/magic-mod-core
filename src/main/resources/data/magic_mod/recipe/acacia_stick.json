@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "/",
+        "/"
+    ],
+    "key": {
+        "/": "minecraft:acacia_planks"
+    },
+    "result": {
+        "id": "magic_mod:acacia_stick",
+        "count": 4
+    }
+}

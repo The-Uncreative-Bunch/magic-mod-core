@@ -1,6 +1,17 @@
 {
   "replace": false,
   "values": [
-    "magic_mod:acacia_stick"
+    "magic_mod:acacia_stick",
+    "magic_mod:bamboo_stick",
+    "magic_mod:birch_stick",
+    "magic_mod:cherry_stick",
+    "magic_mod:crimson_stick",
+    "magic_mod:dark_oak_stick",
+    "magic_mod:jungle_stick",
+    "magic_mod:mangrove_stick",
+    "magic_mod:oak_stick",
+    "magic_mod:pale_oak_stick",
+    "magic_mod:spruce_stick",
+    "magic_mod:warped_stick"
   ]
 }
