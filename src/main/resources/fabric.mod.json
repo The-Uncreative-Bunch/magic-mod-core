@@ -20,6 +20,9 @@
 		],
 		"client": [
 			"com.uncreativebunch.magicmod.MagicModClient"
+		],
+		"fabric-datagen": [
+			"com.uncreativebunch.magicmod.datagen.DataGenerator"
 		]
 	},
 	"mixins": [

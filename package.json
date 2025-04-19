@@ -11,5 +11,9 @@
   "devDependencies": {
     "commitlint": "^19.8.0",
     "husky": "^9.1.7"
+  },
+  "dependencies": {
+    "tsc": "^2.0.4",
+    "tsx": "^4.19.3"
   }
 }

@@ -1,0 +1,1 @@
+{"type":"minecraft:crafting_shaped","category":"misc","group":"wooden_sign","key":{"#":"minecraft:birch_planks","X":"#magic_mod:sticks"},"pattern":["###","###"," X "],"result":{"count":3,"id":"minecraft:birch_sign"}}

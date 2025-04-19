@@ -1,0 +1,1 @@
+{"type":"minecraft:crafting_shaped","category":"equipment","key":{"#":"#magic_mod:sticks","$":"minecraft:tripwire_hook","&":"minecraft:iron_ingot","~":"minecraft:string"},"pattern":["#&#","~$~"," # "],"result":{"count":1,"id":"minecraft:crossbow"}}
