@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "$%$",
+    "###"
+  ],
+  "key": {
+    "#": "minecraft:obsidian",
+    "$": "minecraft:amethyst_shard",
+    "%": "minecraft:book"
+  },
+  "result": {
+    "id": "magic_mod:magical_crafting_table",
+    "count": 1
+  }
+}

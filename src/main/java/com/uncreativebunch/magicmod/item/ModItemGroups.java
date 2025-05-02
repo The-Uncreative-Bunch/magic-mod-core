@@ -1,6 +1,7 @@
 package com.uncreativebunch.magicmod.item;
 
 import com.uncreativebunch.magicmod.MagicMod;
+import com.uncreativebunch.magicmod.block.ModBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.ItemGroup;
@@ -31,7 +32,7 @@ public class ModItemGroups {
      */
     public static final ItemGroup MAGIC_GROUP = FabricItemGroup.builder()
         .icon(() -> new ItemStack(ModItems.TESTING_POWDER))  // The item to show as the group's icon. Can be anything.
-        .displayName(Text.translatable("magic-mod.magic_group"))  // Gets the name from the translation file in the mod resources.
+        .displayName(Text.translatable("magic_mod.magic_group"))  // Gets the name from the translation file in the mod resources.
         .build();
 
 
@@ -42,12 +43,11 @@ public class ModItemGroups {
      * custom items.
      */
     public static void init() {
-        ModItems.init();
-
         Registry.register(Registries.ITEM_GROUP, MAGIC_GROUP_KEY, MAGIC_GROUP);
         ItemGroupEvents.modifyEntriesEvent(MAGIC_GROUP_KEY)
             .register(itemGroup -> {
                 itemGroup.add(ModItems.TESTING_POWDER);
+                itemGroup.add(ModBlocks.MAGICAL_CRAFTING_TABLE.asItem());
             });
 
         MagicMod.LOGGER.info("Item group initialization complete");

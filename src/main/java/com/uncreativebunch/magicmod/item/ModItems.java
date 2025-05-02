@@ -22,17 +22,18 @@ public class ModItems {
             .food(ModFoodComponents.TESTING_POWDER_COMPONENT, ModConsumableComponents.TESTING_POWDER_NIGHTVIS)
     );
 
+    public static RegistryKey<Item> keyOf(String id) {
+        return RegistryKey.of(RegistryKeys.ITEM, Identifier.of(MagicMod.MOD_ID, id));
+    }
 
     public static Item register(String name, @NotNull Function<Item.Settings, Item> factory, Item.Settings settings) {
         // Create the item's registry key (get it from the ITEM registry)
         // Create the item with the specified settings and give it the correct registry key
         // Register the item with the registry (use the key we found and associate it with the new item)
 
-        RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(MagicMod.MOD_ID, name));
+        RegistryKey<Item> itemKey = keyOf(name);
         Item item = factory.apply(settings.registryKey(itemKey));
-        Registry.register(Registries.ITEM, itemKey, item);
-
-        return item;
+        return Registry.register(Registries.ITEM, itemKey, item);
     }
 
     /**
