@@ -46,7 +46,20 @@ public class ModItemGroups {
         Registry.register(Registries.ITEM_GROUP, MAGIC_GROUP_KEY, MAGIC_GROUP);
         ItemGroupEvents.modifyEntriesEvent(MAGIC_GROUP_KEY)
             .register(itemGroup -> {
+                itemGroup.add(ModItems.ACACIA_STICK);
+                itemGroup.add(ModItems.BAMBOO_STICK);
+                itemGroup.add(ModItems.BIRCH_STICK);
+                itemGroup.add(ModItems.CHERRY_STICK);
+                itemGroup.add(ModItems.CRIMSON_STICK);
+                itemGroup.add(ModItems.DARK_OAK_STICK);
+                itemGroup.add(ModItems.JUNGLE_STICK);
+                itemGroup.add(ModItems.MANGROVE_STICK);
+                itemGroup.add(ModItems.OAK_STICK);
+                itemGroup.add(ModItems.PALE_OAK_STICK);
+                itemGroup.add(ModItems.SPRUCE_STICK);
+                itemGroup.add(ModItems.WARPED_STICK);
                 itemGroup.add(ModItems.TESTING_POWDER);
+              
                 itemGroup.add(ModBlocks.MAGICAL_CRAFTING_TABLE.asItem());
             });
 

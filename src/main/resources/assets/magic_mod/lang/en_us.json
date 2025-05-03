@@ -1,5 +1,17 @@
 ﻿{
   "block.magic_mod.magical_crafting_table": "Magic Crafter",
   "item.magic_mod.testing_powder": "Testing Powder (edible)",
+  "item.magic_mod.acacia_stick": "Acacia Stick",
+  "item.magic_mod.bamboo_stick": "Bamboo Stick",
+  "item.magic_mod.birch_stick": "Birch Stick",
+  "item.magic_mod.cherry_stick": "Cherry Stick",
+  "item.magic_mod.crimson_stick": "Crimson Stick",
+  "item.magic_mod.dark_oak_stick": "Dark Oak Stick",
+  "item.magic_mod.jungle_stick": "Jungle Stick",
+  "item.magic_mod.mangrove_stick": "Mangrove Stick",
+  "item.magic_mod.oak_stick": "Oak Stick",
+  "item.magic_mod.pale_oak_stick": "Pale Oak Stick",
+  "item.magic_mod.spruce_stick": "Spruce Stick",
+  "item.magic_mod.warped_stick": "Warped Stick",
   "magic_mod.magic_group": "Testing Mod Items"
 }

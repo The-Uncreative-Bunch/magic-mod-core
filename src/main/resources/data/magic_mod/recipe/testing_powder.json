@@ -5,9 +5,11 @@
         " / ",
         "/  "
     ],
+    
     "key": {
-        "/": "minecraft:stick"
+        "/": "#magic_mod:sticks"
     },
+  
     "result": {
         "id": "magic_mod:testing_powder",
         "count": 1
