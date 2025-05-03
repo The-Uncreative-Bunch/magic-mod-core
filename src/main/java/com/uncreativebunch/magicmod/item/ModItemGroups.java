@@ -1,6 +1,7 @@
 package com.uncreativebunch.magicmod.item;
 
 import com.uncreativebunch.magicmod.MagicMod;
+import com.uncreativebunch.magicmod.block.ModBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.ItemGroup;
@@ -42,8 +43,6 @@ public class ModItemGroups {
      * custom items.
      */
     public static void init() {
-        ModItems.init();
-
         Registry.register(Registries.ITEM_GROUP, MAGIC_GROUP_KEY, MAGIC_GROUP);
         ItemGroupEvents.modifyEntriesEvent(MAGIC_GROUP_KEY)
             .register(itemGroup -> {
@@ -58,8 +57,10 @@ public class ModItemGroups {
                 itemGroup.add(ModItems.OAK_STICK);
                 itemGroup.add(ModItems.PALE_OAK_STICK);
                 itemGroup.add(ModItems.SPRUCE_STICK);
-                itemGroup.add(ModItems.TESTING_POWDER);
                 itemGroup.add(ModItems.WARPED_STICK);
+                itemGroup.add(ModItems.TESTING_POWDER);
+              
+                itemGroup.add(ModBlocks.MAGICAL_CRAFTING_TABLE.asItem());
             });
 
         MagicMod.LOGGER.info("Item group initialization complete");
