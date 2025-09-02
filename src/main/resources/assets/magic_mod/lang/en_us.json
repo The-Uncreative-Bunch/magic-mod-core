@@ -1,5 +1,5 @@
 ﻿{
-  "block.magic_mod.magical_crafting_table": "Magic Crafter",
+  "item.magic_mod.magical_crafting_table": "Magic Crafter",
   "item.magic_mod.testing_powder": "Testing Powder (edible)",
   "item.magic_mod.acacia_stick": "Acacia Stick",
   "item.magic_mod.bamboo_stick": "Bamboo Stick",
@@ -13,5 +13,6 @@
   "item.magic_mod.pale_oak_stick": "Pale Oak Stick",
   "item.magic_mod.spruce_stick": "Spruce Stick",
   "item.magic_mod.warped_stick": "Warped Stick",
-  "magic_mod.magic_group": "Testing Mod Items"
+  "magic_mod.magic_group": "Testing Mod Items",
+  "tag.item.magic_mod.sticks": "Sticks"
 }
