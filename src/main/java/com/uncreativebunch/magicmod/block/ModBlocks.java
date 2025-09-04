@@ -4,7 +4,6 @@ import com.uncreativebunch.magicmod.MagicMod;
 import com.uncreativebunch.magicmod.block.crafting.MagicalCrafterBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.SlabBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -19,6 +18,7 @@ import java.util.function.Function;
 public class ModBlocks {
     //region Block Definitions
 
+    /** The magical crafting table block. */
     public static final Block MAGICAL_CRAFTING_TABLE = register(
         "magical_crafting_table",
         MagicalCrafterBlock::new,

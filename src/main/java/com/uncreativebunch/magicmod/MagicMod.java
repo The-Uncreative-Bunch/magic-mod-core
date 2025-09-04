@@ -3,6 +3,7 @@ package com.uncreativebunch.magicmod;
 import com.uncreativebunch.magicmod.block.ModBlocks;
 import com.uncreativebunch.magicmod.item.ModItemGroups;
 import com.uncreativebunch.magicmod.item.ModItems;
+import com.uncreativebunch.magicmod.screen.ModScreenHandlers;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -29,6 +30,7 @@ public class MagicMod implements ModInitializer {
 		ModBlocks.init();
 		ModItems.init();
 		ModItemGroups.init();
+        ModScreenHandlers.init();
 		LOGGER.info("Finished Magic Mod initialization!");
 	}
 }
