@@ -21,6 +21,16 @@ public class StickTagRecipeProvider extends FabricRecipeProvider {
             public void generate() {
                 MagicMod.LOGGER.info("Hello from the recipe provider!");
                 MagicMod.LOGGER.info("This cannot scan recipes - apparently they don't exist in this context.");
+
+                // Create a builder for our custom recipe types. This will allow for type-safe creation of recipes.
+                // This builder should likely be defined as a static class or function within the main Recipe class.
+                // RecipeBuilder.create(
+                //     Ingredient.fromTag(ItemTags.MAGIC_MATERIALS),
+                //     Ingredient.fromTag(ItemTags.MAGIC_CORES),
+                //     Ingredient.fromTag(ItemTags.MAGIC_GRIPS),
+                //     ModItems.BASIC_WAND.getDefaultStack(),
+                //     new Identifier("magic_mod", "basic_wand_crafting")
+                // );
             }
         };
     }

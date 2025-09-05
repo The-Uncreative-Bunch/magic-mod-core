@@ -1,8 +1,10 @@
 package com.uncreativebunch.magicmod;
 
 import com.uncreativebunch.magicmod.block.ModBlocks;
+import com.uncreativebunch.magicmod.block.entity.ModBlockEntityTypes;
 import com.uncreativebunch.magicmod.item.ModItemGroups;
 import com.uncreativebunch.magicmod.item.ModItems;
+import com.uncreativebunch.magicmod.recipe.ModRecipeTypes;
 import com.uncreativebunch.magicmod.screen.ModScreenHandlers;
 import net.fabricmc.api.ModInitializer;
 
@@ -31,6 +33,8 @@ public class MagicMod implements ModInitializer {
 		ModItems.init();
 		ModItemGroups.init();
         ModScreenHandlers.init();
+        ModRecipeTypes.init();
+        ModBlockEntityTypes.init();
 		LOGGER.info("Finished Magic Mod initialization!");
 	}
 }

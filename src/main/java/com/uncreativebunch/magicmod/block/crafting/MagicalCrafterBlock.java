@@ -1,10 +1,12 @@
 package com.uncreativebunch.magicmod.block.crafting;
 
+import com.mojang.serialization.MapCodec;
 import com.uncreativebunch.magicmod.MagicMod;
+import com.uncreativebunch.magicmod.block.entity.MagicalCrafterBlockEntity;
 import com.uncreativebunch.magicmod.screen.MagicalCraftingScreenHandler;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.CraftingTableBlock;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.enums.SlabType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -12,19 +14,34 @@ import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
 import net.minecraft.stat.Stats;
+import net.minecraft.state.StateManager;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class MagicalCrafterBlock extends CraftingTableBlock {
+public class MagicalCrafterBlock extends BlockWithEntity {
+
+    private static final MapCodec<MagicalCrafterBlock> CODEC = null;
 
     /**
      * Creates a new MagicalCrafterBlock.
      * @param settings The settings of the block.
      */
-    public MagicalCrafterBlock(AbstractBlock.Settings settings) { super(settings); }
+    public MagicalCrafterBlock(AbstractBlock.Settings settings) {
+        super(settings);
+        this.setDefaultState(
+            this.stateManager.getDefaultState()
+                .with(SlabBlock.TYPE, SlabType.BOTTOM)
+                .with(SlabBlock.WATERLOGGED, false)
+        );
+    }
+
+    @Override
+    protected MapCodec<? extends BlockWithEntity> getCodec() {
+        return CODEC;
+    }
 
     /**
      * Occurs whenever this block is used.
@@ -70,5 +87,19 @@ public class MagicalCrafterBlock extends CraftingTableBlock {
                 new MagicalCraftingScreenHandler(syncId, playerInventory, ScreenHandlerContext.create(world, pos))),
             Text.translatable("container.magical_crafting_table")
         );
+    }
+
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new MagicalCrafterBlockEntity(pos, state);
+    }
+
+    /**
+     * Adds properties to the block state. This crafting table is a slab, so it has a type and waterlogged property.
+     * @param builder The {@link StateManager.Builder} to add properties to.
+     */
+    @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(SlabBlock.TYPE, SlabBlock.WATERLOGGED);
     }
 }
