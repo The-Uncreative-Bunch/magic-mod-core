@@ -1,4 +1,4 @@
-package com.uncreativebunch.magicmod.util;
+package com.uncreativebunch.magicmod.inventory;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;

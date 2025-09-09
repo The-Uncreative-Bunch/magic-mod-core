@@ -93,7 +93,7 @@ public class ModItems {
         Item::new,
         new Item.Settings()
     );
-  
+
     public static RegistryKey<Item> keyOf(String id) {
         return RegistryKey.of(RegistryKeys.ITEM, Identifier.of(MagicMod.MOD_ID, id));
     }

@@ -7,8 +7,8 @@ import java.util.List;
 
 public record MagicShapedInput(List<ItemStack> stacks) implements RecipeInput {
     @Override
-    public ItemStack getStackInSlot(int slot) {
-        return stacks.get(slot);
+    public ItemStack getStackInSlot(int index) {
+        return stacks.get(index);
     }
 
     @Override

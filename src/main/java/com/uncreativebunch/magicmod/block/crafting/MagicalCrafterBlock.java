@@ -2,10 +2,14 @@ package com.uncreativebunch.magicmod.block.crafting;
 
 import com.mojang.serialization.MapCodec;
 import com.uncreativebunch.magicmod.MagicMod;
+import com.uncreativebunch.magicmod.block.ModBlocks;
 import com.uncreativebunch.magicmod.block.entity.MagicalCrafterBlockEntity;
+import com.uncreativebunch.magicmod.block.entity.ModBlockEntityTypes;
 import com.uncreativebunch.magicmod.screen.MagicalCraftingScreenHandler;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.enums.SlabType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
@@ -80,14 +84,14 @@ public class MagicalCrafterBlock extends BlockWithEntity {
         return ActionResult.SUCCESS;
     }
 
-    @Override
-    public NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
-        return new SimpleNamedScreenHandlerFactory(
-            ((syncId, playerInventory, player) ->
-                new MagicalCraftingScreenHandler(syncId, playerInventory, ScreenHandlerContext.create(world, pos))),
-            Text.translatable("container.magical_crafting_table")
-        );
-    }
+//    @Override
+//    public NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
+//        return new SimpleNamedScreenHandlerFactory(
+//            ((syncId, playerInventory, player) ->
+//                new MagicalCraftingScreenHandler(syncId, playerInventory, ScreenHandlerContext.create(world, pos))),
+//            Text.translatable("container.magical_crafting_table")
+//        );
+//    }
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
@@ -101,5 +105,19 @@ public class MagicalCrafterBlock extends BlockWithEntity {
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(SlabBlock.TYPE, SlabBlock.WATERLOGGED);
+    }
+
+    /**
+     * Creates a {@link BlockEntityTicker} that runs the specified "tick" function from the
+     * given {@link BlockEntityType}.
+     * @param world The {@link World} instance.
+     * @param state The {@link BlockState} of the block.
+     * @param type The {@link BlockEntityType} to run the tick function from.
+     * @return A new {@link BlockEntityTicker} that runs the specified tick function.
+     * @param <T> The {@link BlockEntity} to use.
+     */
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return validateTicker(type, ModBlockEntityTypes.MAGICAL_CRAFTING_TABLE, MagicalCrafterBlockEntity::tick);
     }
 }
