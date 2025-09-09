@@ -21,11 +21,6 @@ import java.util.Optional;
 
 public record MagicShapedRecipe(Ingredient coreIngredient, Ingredient materialIngredient, Ingredient gripIngredient,
                                 ItemStack output, Identifier id) implements Recipe<MagicShapedInput> {
-
-    public boolean fits(int width, int height) {
-        return true;
-    }
-
     @Override
     public boolean matches(MagicShapedInput input, World world) {
         if (input.stacks().size() < 2) return false;
@@ -87,8 +82,7 @@ public record MagicShapedRecipe(Ingredient coreIngredient, Ingredient materialIn
 
     // Type definition
     public static class Type implements RecipeType<MagicShapedRecipe> {
-        private Type() {
-        }
+        private Type() { }
 
         public static final Type INSTANCE = new Type();
         public static final String ID = "magic_crafting";
@@ -129,12 +123,8 @@ public record MagicShapedRecipe(Ingredient coreIngredient, Ingredient materialIn
             return CODEC;
         }
 
-        /**
-         * Gets the packet codec for this serializer. This determines how the recipe is parsed from packets.
-         *
-         * @return The packet codec for this serializer.
-         */
         @Override
+        @Deprecated
         public PacketCodec<RegistryByteBuf, MagicShapedRecipe> packetCodec() {
             return PACKET_CODEC;
         }
