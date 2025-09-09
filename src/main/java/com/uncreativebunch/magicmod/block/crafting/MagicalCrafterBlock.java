@@ -65,13 +65,6 @@ public class MagicalCrafterBlock extends BlockWithEntity {
         if (!world.isClient) {
             MagicMod.LOGGER.info("Block was used at location {}", pos.toShortString());
 
-            MagicMod.LOGGER.info("Electrocuting player...");
-            BlockPos playerPos = player.getBlockPos();
-            LightningEntity lightningEntity = new LightningEntity(EntityType.LIGHTNING_BOLT, world);
-            lightningEntity.setPosition(playerPos.toCenterPos());
-            world.spawnEntity(lightningEntity);
-            MagicMod.LOGGER.info("Player electrocuted.");
-
             NamedScreenHandlerFactory screenFactory = state.createScreenHandlerFactory(world, pos);
             if (screenFactory != null) {
                 player.openHandledScreen(screenFactory);
@@ -83,15 +76,6 @@ public class MagicalCrafterBlock extends BlockWithEntity {
 
         return ActionResult.SUCCESS;
     }
-
-//    @Override
-//    public NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
-//        return new SimpleNamedScreenHandlerFactory(
-//            ((syncId, playerInventory, player) ->
-//                new MagicalCraftingScreenHandler(syncId, playerInventory, ScreenHandlerContext.create(world, pos))),
-//            Text.translatable("container.magical_crafting_table")
-//        );
-//    }
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
