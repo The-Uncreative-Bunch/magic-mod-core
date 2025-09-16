@@ -1,5 +1,6 @@
 package com.uncreativebunch.magicmod.block.entity;
 
+import com.uncreativebunch.magicmod.inventory.InputInventory;
 import com.uncreativebunch.magicmod.inventory.OutputInventory;
 import com.uncreativebunch.magicmod.recipe.MagicShapedInput;
 import com.uncreativebunch.magicmod.recipe.ModRecipeTypes;
@@ -9,7 +10,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.recipe.ServerRecipeManager;
 import net.minecraft.screen.NamedScreenHandlerFactory;
@@ -27,7 +27,7 @@ public class MagicalCrafterBlockEntity extends BlockEntity implements NamedScree
     /**
      * The input inventory for crafting ingredients. It goes in the order core, material, and grip.
      */
-    private final SimpleInventory inputInventory = new SimpleInventory(3);
+    private final InputInventory inputInventory = new InputInventory(3);
     /**
      * The output inventory for crafting ingredients.
      */
@@ -40,9 +40,9 @@ public class MagicalCrafterBlockEntity extends BlockEntity implements NamedScree
 
     /**
      * Gets the input inventory for this block entity.
-     * @return A {@link SimpleInventory} that represents the input inventory.
+     * @return A {@link InputInventory} that represents the input inventory.
      */
-    public SimpleInventory getInputInventory() { return inputInventory; }
+    public InputInventory getInputInventory() { return inputInventory; }
 
     /**
      * Gets the output inventory for this block entity.
