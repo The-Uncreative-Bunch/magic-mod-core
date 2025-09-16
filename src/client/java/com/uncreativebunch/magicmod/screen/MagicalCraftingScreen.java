@@ -8,7 +8,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class MagicalCraftingScreen extends HandledScreen<MagicalCraftingScreenHandler> {
-    private static final Identifier TEXTURE = Identifier.of("textures/gui/container/anvil.png");
+    private static final Identifier TEXTURE = Identifier.of("textures/gui/container/dispenser.png");
 
     public MagicalCraftingScreen(MagicalCraftingScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);

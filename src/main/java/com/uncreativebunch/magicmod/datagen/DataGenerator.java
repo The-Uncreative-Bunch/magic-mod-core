@@ -13,6 +13,6 @@ public class DataGenerator implements DataGeneratorEntrypoint {
         MagicMod.LOGGER.info("Hello from the data generator!");
 
         // Add providers to the pack here.
-        pack.addProvider(StickTagRecipeProvider::new);
+        pack.addProvider(MagicRecipeProvider::new);
     }
 }

@@ -1,17 +1,17 @@
 package com.uncreativebunch.magicmod.screen;
 
+import com.uncreativebunch.magicmod.inventory.InputInventory;
+import com.uncreativebunch.magicmod.inventory.OutputInventory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.slot.Slot;
 
 public class MagicalCraftingScreenHandler extends ScreenHandler {
 
-    private final ScreenHandlerContext context;
-    private final CraftingInventory inventory;
+    private final InputInventory inputInventory;
+    private final OutputInventory outputInventory;
 
     /**
      * Client-side constructor.
@@ -19,7 +19,7 @@ public class MagicalCraftingScreenHandler extends ScreenHandler {
      * @param playerInventory The player's inventory.
      */
     public MagicalCraftingScreenHandler(int syncId, PlayerInventory playerInventory) {
-        this(syncId, playerInventory, ScreenHandlerContext.EMPTY);
+        this(syncId, playerInventory, new InputInventory(3), new OutputInventory(1));
     }
 
     /**
@@ -27,29 +27,35 @@ public class MagicalCraftingScreenHandler extends ScreenHandler {
      * It handles creating the inventory slots and syncs all information from the server to the client.
      * @param syncId The sync ID that's sent from the server.
      * @param playerInventory The player's inventory.
-     * @param screenHandlerContext The context of the screen handler. Not sure if this is needed anymore.
+     * @param inputInventory The crafting inventory.
+     * @param outputInventory The output inventory.
      */
-    public MagicalCraftingScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext screenHandlerContext) {
+    public MagicalCraftingScreenHandler(int syncId, PlayerInventory playerInventory, InputInventory inputInventory,
+                                        OutputInventory outputInventory) {
         super(ModScreenHandlers.MAGICAL_CRAFTING_SCREEN_HANDLER, syncId);
-        this.context = screenHandlerContext;
-        this.inventory = new CraftingInventory(this, 3, 3);
+        this.inputInventory = inputInventory;
+        this.outputInventory = outputInventory;
 
         // Ensure that the crafting inventory is the correct size.
-        checkSize(inventory, 9);
+        checkSize(inputInventory, 3);
+        checkSize(outputInventory, 1);
 
         // Ensure that the inventory's custom logic runs (if any)
-        inventory.onOpen(playerInventory.player);
+        inputInventory.onOpen(playerInventory.player);
+        outputInventory.onOpen(playerInventory.player);
 
         // Place all inventory slots within the screen. This piece doesn't actually render the background of the slots,
         // as this is handled by the client-side application (the Screen), but it does tell the screen where to render.
+        // We do assign locations - each slot is 18 units wide/tall.
         int m, l;
-        for (m = 0; m < 3; m++) {
-            for (l = 0; l < 3; l++) {
-                // Create the crafting slots. This is good for a 3x3 grid of crafting slots. It registers them to a
-                // specific inventory and location on the client's screen, relative to the screen's size and origin.
-                this.addSlot(new Slot(inventory, l + m * 3, 62 + l * 18, 17 + m * 18));
-            }
+        for (l = 0; l < 3; l++) {
+            // Create the crafting slots. This is good for a 3x3 grid of crafting slots. It registers them to a
+            // specific inventory and location on the client's screen, relative to the screen's size and origin.
+            this.addSlot(new Slot(inputInventory, l, 62 + l * 18, 17));
         }
+
+        // TODO I don't actually know where the output slot should be located. Get correct coords.
+        this.addSlot(new MagicResultSlot(inputInventory, outputInventory, 0, 80, 35));
 
         // Add all player inventory slots. Start with the main inventory, then the hotbar.
         for (m = 0; m < 3; m++) {
@@ -68,7 +74,7 @@ public class MagicalCraftingScreenHandler extends ScreenHandler {
      * @return True if the slot index is within the crafting inventory, false otherwise.
      */
     protected boolean isCraftingInventorySlot(int slotIndex) {
-        return slotIndex < this.inventory.size();
+        return slotIndex < this.inputInventory.size();
     }
 
     @Override
@@ -83,7 +89,7 @@ public class MagicalCraftingScreenHandler extends ScreenHandler {
             newStack = stack.copy();
             if (isCraftingInventorySlot(slotIndex)) {
                 // Attempt to move the stack into the player's inventory.
-                if (!this.insertItem(stack, this.inventory.size(), this.slots.size(), true)) {
+                if (!this.insertItem(stack, this.inputInventory.size() + this.outputInventory.size(), this.slots.size(), true)) {
                     return ItemStack.EMPTY;
                 }
             } else {
@@ -104,6 +110,6 @@ public class MagicalCraftingScreenHandler extends ScreenHandler {
 
     @Override
     public boolean canUse(PlayerEntity player) {
-        return inventory.canPlayerUse(player);
+        return inputInventory.canPlayerUse(player);
     }
 }
